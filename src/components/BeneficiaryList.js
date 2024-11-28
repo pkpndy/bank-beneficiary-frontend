@@ -5,8 +5,10 @@ import {
     editBeneficiary,
     fetchBeneficiaries,
 } from "../redux/beneficiarySlice";
+import "./styles.css";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import 'boxicons';
 
 export const BeneficiaryList = () => {
     const dispatch = useDispatch();
@@ -22,9 +24,9 @@ export const BeneficiaryList = () => {
     const onEditClick = (beneficiary) => {
         setEditId(beneficiary._id);
         setValue("fullName", beneficiary.fullName);
-        setValue("address", beneficiary.address);
-        setValue("country", beneficiary.country);
-        setValue("pincode", beneficiary.pincode);
+        setValue("accountNumber", beneficiary.accountNumber);
+        setValue("accountType", beneficiary.accountType);
+        setValue("bankName", beneficiary.bankName);
     };
 
     const onDeleteClick = (id) => {
@@ -64,33 +66,38 @@ export const BeneficiaryList = () => {
                                             defaultValue={b.fullName}
                                         />
                                         <input
-                                            {...register("address", {
+                                            {...register("accountNumber", {
                                                 required: true,
                                             })}
                                         />
                                         <select
-                                            {...register("country", {
+                                            {...register("accountType", {
                                                 required: true,
                                             })}>
                                             <option value="" defaultValue>
-                                                Select Country
+                                                Select Account Type
                                             </option>
-                                            <option value="India">India</option>
-                                            <option value="Sri Lanka">
-                                                Sri Lanka
+                                            <option value="Individual Beneficiary Account">
+                                                Individual Beneficiary Account
                                             </option>
-                                            <option value="Australia">
-                                                Australia
+                                            <option value="Joint Beneficiary Account">
+                                                Joint Beneficiary Account
                                             </option>
-                                            <option value="Canada">
-                                                Canada
+                                            <option value="Contingent Beneficiary Account">
+                                                Contingent Beneficiary Account
                                             </option>
-                                            <option value="Sweden">
-                                                Sweden
+                                            <option value="Revocable Beneficiary Account">
+                                                Revocable Beneficiary Account
+                                            </option>
+                                            <option value="Irrevocable Beneficiary Account">
+                                                Irrevocable Beneficiary Account
+                                            </option>
+                                            <option value="Class Beneficiary Account">
+                                                Class Beneficiary Account
                                             </option>
                                         </select>
                                         <input
-                                            {...register("pincode", {
+                                            {...register("bankName", {
                                                 required: true,
                                             })}
                                         />
@@ -112,11 +119,21 @@ export const BeneficiaryList = () => {
                             ) : (
                                 <>
                                     <span>
-                                        {b.fullName} - {b.address} - {b.country}{" "}
-                                        - {b.pincode}
+                                        {b.fullName} - {b.accountNumber} -{" "}
+                                        {b.accountType} - {b.bankName}
                                     </span>
-                                        <button onClick={() => onEditClick(b)}>Edit</button>
-                                        <button onClick={() => onDeleteClick(b._id)}>Delete</button>
+                                    <box-icon
+                                            name="edit"
+                                            color="green"
+                                        onClick={() =>
+                                            onEditClick(b)
+                                        }></box-icon>
+                                    <box-icon
+                                            name="trash"
+                                            color="blue"
+                                        onClick={() =>
+                                            onDeleteClick(b._id)
+                                        }></box-icon>
                                 </>
                             )}
                         </li>

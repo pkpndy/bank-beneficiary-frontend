@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { addBeneficiary } from "../redux/beneficiarySlice";
 import { useNavigate } from "react-router-dom";
+import './AddBeneficiary.css';
 
 export const AddBeneficiary = () => {
     const {
@@ -11,15 +12,15 @@ export const AddBeneficiary = () => {
         formState: { errors },
         reset,
     } = useForm();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
         try {
             dispatch(addBeneficiary(data));
             alert("Beneficiary added!");
-          reset();
-          navigate('/');
+            reset();
+            navigate("/");
         } catch (err) {
             alert("Error!");
         }
@@ -33,28 +34,41 @@ export const AddBeneficiary = () => {
                 {errors.fullName && <span>Full Name is required</span>}
             </label>
             <label>
-                Adress:
-                <input {...register("address", { required: true })} />
-                {errors.address && <span>Address is required</span>}
+                AccountNumber:
+                <input {...register("accountNumber", { required: true })} />
+                {errors.accountNumber && <span>AccountNumber is required</span>}
             </label>
             <label>
-                Country:
-                <select {...register("country", { required: true })}>
+                AccountType:
+                <select {...register("accountType", { required: true })}>
                     <option value="" defaultValue>
-                        Select Country
+                        Select accountType
                     </option>
-                    <option value="India">India</option>
-                    <option value="Sri Lanka">Sri Lanka</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Canada">Canada</option>
-                    <option value="Sweden">Sweden</option>
+                    <option value="Individual Beneficiary Account">
+                        Individual Beneficiary Account
+                    </option>
+                    <option value="Joint Beneficiary Account">
+                        Joint Beneficiary Account
+                    </option>
+                    <option value="Contingent Beneficiary Account">
+                        Contingent Beneficiary Account
+                    </option>
+                    <option value="Revocable Beneficiary Account">
+                        Revocable Beneficiary Account
+                    </option>
+                    <option value="Irrevocable Beneficiary Account">
+                        Irrevocable Beneficiary Account
+                    </option>
+                    <option value="Class Beneficiary Account">
+                        Class Beneficiary Account
+                    </option>
                 </select>
-                {errors.country && <span>Country is required</span>}
+                {errors.accountType && <span>AccountType is required</span>}
             </label>
             <label>
-                Pincode:
-                <input {...register("pincode", { required: true })} />
-                {errors.pincode && <span>Pincode is required</span>}
+                BankName:
+                <input {...register("bankName", { required: true })} />
+                {errors.bankName && <span>BankName is required</span>}
             </label>
             <button type="submit">Add Beneficiary</button>
         </form>

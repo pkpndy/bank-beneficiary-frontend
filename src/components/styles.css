@@ -1,8 +1,140 @@
+/* General Container Styling */
 .container {
     max-width: 800px;
-    margin: 20px auto;
-    background: #fff;
+    margin: 0 auto;
     padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styling */
+h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Beneficiary List Styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.beneficiary-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Align and space icons */
+.beneficiary-item box-icon {
+    cursor: pointer;
+    margin-left: 8px; /* Adjust spacing between icons */
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.beneficiary-item box-icon:hover {
+    color: #0056b3;
+}
+
+/* Flex container for the text and icons */
+.beneficiary-item span {
+    flex-grow: 1; /* Take available space for text */
+    margin-right: 8px; /* Space between text and icons */
+}
+
+
+/* Form Styling */
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-fields input,
+.form-fields select {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-fields select {
+    background-color: #fff;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Button Styling */
+button {
+    padding: 8px 12px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button.cancel-btn {
+    background-color: #6c757d;
+}
+
+button.cancel-btn:hover {
+    background-color: #5a6268;
+}
+
+button.save-btn {
+    background-color: #28a745;
+}
+
+button.save-btn:hover {
+    background-color: #218838;
+}
+
+/* Add Link Styling */
+.add-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #17a2b8;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.add-link:hover {
+    background-color: #138496;
+}
+
+/* Empty List Message */
+p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 20px;
 }
